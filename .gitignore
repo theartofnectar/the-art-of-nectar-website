@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# vscode personal settings (shared workspace settings are in .vscode/settings.json)
+.vscode/launch.json
