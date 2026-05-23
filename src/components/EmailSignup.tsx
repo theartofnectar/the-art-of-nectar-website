@@ -11,10 +11,19 @@ export default function EmailSignup() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("loading");
-    // TODO: wire to email service (Mailchimp, ConvertKit, etc.)
-    await new Promise<void>((resolve) => setTimeout(resolve, 900));
-    setStatus("success");
-    setEmail("");
+    try {
+      const res = await fetch("https://art-of-nectar-email.theartofnectar.workers.dev", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      if (!res.ok) throw new Error("Failed");
+      setStatus("success");
+      setEmail("");
+    } catch {
+      setStatus("idle");
+      alert("Something went wrong. Please try again.");
+    }
   }
 
   if (status === "success") {
