@@ -651,13 +651,18 @@ export default function Home() {
           {/* Bottom: links + copyright */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <nav className="flex gap-6">
-              {["Our Story", "Honey", "Gallery", "Contact"].map((item) => (
+              {[
+                { label: "Our Story", href: "#story" },
+                { label: "Honey", href: "#honey" },
+                { label: "Gallery", href: "#gallery" },
+                { label: "Contact", href: "mailto:theartofnectar@gmail.com" },
+              ].map(({ label, href }) => (
                 <a
-                  key={item}
-                  href={`#${item.toLowerCase().replace(" ", "")}`}
+                  key={label}
+                  href={href}
                   className="font-sans text-xs tracking-widest uppercase text-cream/40 hover:text-honey transition-colors duration-300"
                 >
-                  {item}
+                  {label}
                 </a>
               ))}
             </nav>
