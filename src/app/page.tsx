@@ -1,4 +1,5 @@
 import EmailSignup from "@/components/EmailSignup";
+import ContactLink from "@/components/ContactLink";
 
 /* ─── Reusable SVG elements ─── */
 
@@ -655,7 +656,6 @@ export default function Home() {
                 { label: "Our Story", href: "#story" },
                 { label: "Honey", href: "#honey" },
                 { label: "Gallery", href: "#gallery" },
-                { label: "Contact", href: "mailto:theartofnectar@gmail.com" },
               ].map(({ label, href }) => (
                 <a
                   key={label}
@@ -665,6 +665,7 @@ export default function Home() {
                   {label}
                 </a>
               ))}
+              <ContactLink className="font-sans text-xs tracking-widest uppercase text-cream/40 hover:text-honey transition-colors duration-300" />
             </nav>
             <p className="font-sans text-xs text-cream/30 tracking-wide">
               &copy; 2026 The Art of Nectar Honey Co.
