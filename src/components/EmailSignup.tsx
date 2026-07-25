@@ -6,6 +6,7 @@ type Status = "idle" | "loading" | "success";
 
 export default function EmailSignup() {
   const [email, setEmail] = useState("");
+  const [website, setWebsite] = useState("");
   const [status, setStatus] = useState<Status>("idle");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -15,7 +16,7 @@ export default function EmailSignup() {
       const res = await fetch("https://art-of-nectar-email.theartofnectar.workers.dev", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, website }),
       });
       if (!res.ok) throw new Error("Failed");
       setStatus("success");
@@ -44,6 +45,17 @@ export default function EmailSignup() {
       onSubmit={handleSubmit}
       className="flex flex-col sm:flex-row gap-0 w-full max-w-md border border-honey/30"
     >
+      {/* Honeypot: hidden from real visitors, so a filled value flags a bot. */}
+      <input
+        type="text"
+        name="website"
+        value={website}
+        onChange={(e) => setWebsite(e.target.value)}
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="absolute -left-[9999px] w-px h-px opacity-0"
+      />
       <input
         type="email"
         required
