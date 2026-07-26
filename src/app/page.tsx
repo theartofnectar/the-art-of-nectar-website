@@ -275,34 +275,34 @@ function TikTokIcon() {
 
 const galleryItems = [
   {
-    title: "A Frame in Hand",
-    label: "INSPECTING THE HIVE",
-    image: "/gallery/frame-inspection.jpg",
+    title: "Coming Home",
+    label: "AT THE ENTRANCE",
+    image: "/gallery/hive-entrance.jpg",
   },
   {
-    title: "Capped & Ready",
-    label: "RIPENED HONEYCOMB",
+    title: "Liquid Gold",
+    label: "RIPENED & CAPPED",
     image: "/gallery/capped-honey.jpg",
   },
   {
     title: "Cedar & Quiet Woods",
     label: "OUR APIARY",
-    image: "/gallery/hive-box.jpg",
-  },
-  {
-    title: "Among the Cells",
-    label: "WORKER BEES AT REST",
-    image: "/gallery/macro-bee-1.jpg",
+    image: "/gallery/hive-clearing.jpg",
   },
   {
     title: "Wing & Wax",
     label: "MACRO DETAIL",
-    image: "/gallery/macro-bee-2.jpg",
+    image: "/gallery/wing-macro.jpg",
   },
   {
     title: "New Life, Capped",
     label: "BROOD COMB",
-    image: "/gallery/brood-comb.jpg",
+    image: "/gallery/brood-cells.jpg",
+  },
+  {
+    title: "Mountain Wildflowers",
+    label: "BLUE RIDGE FOOTHILLS",
+    image: "/gallery/misty-forest.jpg",
   },
 ];
 
@@ -422,8 +422,8 @@ export default function Home() {
                 }}
               >
                 <Image
-                  src="/gallery/story-beekeeper.jpg"
-                  alt="A beekeeper at The Art of Nectar inspecting a frame from the hive"
+                  src="/gallery/story-hive-frame.jpg"
+                  alt="Gloved hands lifting a frame heavy with bees from the hive"
                   fill
                   sizes="(min-width: 1024px) 50vw, 100vw"
                   className="object-cover"
