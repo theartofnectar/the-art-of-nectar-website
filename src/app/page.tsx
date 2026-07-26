@@ -1,3 +1,4 @@
+import Image from "next/image";
 import EmailSignup from "@/components/EmailSignup";
 import ContactLink from "@/components/ContactLink";
 
@@ -274,46 +275,34 @@ function TikTokIcon() {
 
 const galleryItems = [
   {
-    title: "Mountain Wildflowers",
-    label: "BLUE RIDGE FOOTHILLS",
-    fromColor: "from-honey-pale",
-    toColor: "to-honey-light",
-    hex: "#E8B84B",
+    title: "A Frame in Hand",
+    label: "INSPECTING THE HIVE",
+    image: "/gallery/frame-inspection.jpg",
   },
   {
-    title: "Liquid Gold",
-    label: "SMALL-BATCH HARVEST",
-    fromColor: "from-honey",
-    toColor: "to-bark-mid",
-    hex: "#C8941A",
+    title: "Capped & Ready",
+    label: "RIPENED HONEYCOMB",
+    image: "/gallery/capped-honey.jpg",
   },
   {
-    title: "Among the Trees",
-    label: "APPALACHIAN CANOPY",
-    fromColor: "from-green",
-    toColor: "to-bark",
-    hex: "#3D5C35",
+    title: "Cedar & Quiet Woods",
+    label: "OUR APIARY",
+    image: "/gallery/hive-box.jpg",
   },
   {
-    title: "In Full Bloom",
-    label: "WILDFLOWER MEADOW",
-    fromColor: "from-green-light",
-    toColor: "to-honey-pale",
-    hex: "#6B8E5E",
+    title: "Among the Cells",
+    label: "WORKER BEES AT REST",
+    image: "/gallery/macro-bee-1.jpg",
   },
   {
-    title: "Raw Honeycomb",
-    label: "UNFILTERED · NATURAL",
-    fromColor: "from-cream-deep",
-    toColor: "to-honey-light",
-    hex: "#EDE0CA",
+    title: "Wing & Wax",
+    label: "MACRO DETAIL",
+    image: "/gallery/macro-bee-2.jpg",
   },
   {
-    title: "Misty Mornings",
-    label: "NORTH GEORGIA",
-    fromColor: "from-bark-mid",
-    toColor: "to-green",
-    hex: "#4A2D10",
+    title: "New Life, Capped",
+    label: "BROOD COMB",
+    image: "/gallery/brood-comb.jpg",
   },
 ];
 
@@ -422,18 +411,31 @@ export default function Home() {
       {/* ══ OUR STORY ══ */}
       <section id="story" className="bg-cream-deep py-24 sm:py-32 px-6">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          {/* Decorative left column */}
+          {/* Photo column */}
           <div className="flex items-center justify-center order-2 lg:order-1">
             <div className="relative w-full max-w-sm">
-              {/* Layered hex frames */}
-              <HexOutline className="w-full text-honey opacity-20" />
-              <HexOutline className="absolute inset-4 text-terracotta opacity-15" />
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-10">
-                <BotanicalSprig className="h-48 text-green opacity-60" />
-                <p className="font-serif italic text-bark/50 text-sm text-center leading-relaxed">
-                  &ldquo;Tended by hand,<br />slow and unhurried.&rdquo;
-                </p>
+              <div
+                className="relative aspect-[100/87] overflow-hidden"
+                style={{
+                  clipPath:
+                    "polygon(98% 50%, 74% 2.3%, 26% 2.3%, 2% 50%, 26% 97.7%, 74% 97.7%)",
+                }}
+              >
+                <Image
+                  src="/gallery/story-beekeeper.jpg"
+                  alt="A beekeeper at The Art of Nectar inspecting a frame from the hive"
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover"
+                />
               </div>
+              {/* Layered hex frames */}
+              <HexOutline className="absolute inset-0 w-full h-full text-honey opacity-40 pointer-events-none" />
+              <HexOutline className="absolute inset-4 text-cream opacity-20 pointer-events-none" />
+
+              <p className="font-serif italic text-bark/50 text-sm text-center leading-relaxed mt-8">
+                &ldquo;Tended by hand,<br />slow and unhurried.&rdquo;
+              </p>
             </div>
           </div>
 
@@ -550,18 +552,20 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {galleryItems.map((item, i) => (
               <div key={i} className="gallery-card group cursor-default">
-                {/* Gradient image placeholder */}
-                <div
-                  className={`relative aspect-4/5 bg-linear-to-br ${item.fromColor} ${item.toColor} overflow-hidden`}
-                >
-                  {/* Overlay hexagon decoration */}
-                  <HexOutline className="absolute inset-0 m-auto w-3/4 text-white opacity-5" />
+                <div className="relative aspect-4/5 overflow-hidden">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
                   {/* Botanical sprig */}
-                  <BotanicalSprig className="absolute right-4 top-4 h-24 text-white opacity-10" />
-                  {/* Label overlay */}
-                  <div className="absolute inset-0 bg-bark/0 group-hover:bg-bark/20 transition-colors duration-400" />
+                  <BotanicalSprig className="absolute right-4 top-4 h-24 text-white opacity-20" />
+                  {/* Scrim + label overlay */}
+                  <div className="absolute inset-0 bg-linear-to-t from-bark/80 via-bark/5 to-transparent group-hover:from-bark/85 transition-colors duration-400" />
                   <div className="absolute bottom-0 left-0 right-0 p-5">
-                    <p className="font-sans text-[10px] tracking-[0.35em] uppercase text-white/60 mb-1">
+                    <p className="font-sans text-[10px] tracking-[0.35em] uppercase text-white/70 mb-1">
                       {item.label}
                     </p>
                     <p className="font-serif font-light text-xl text-white">
