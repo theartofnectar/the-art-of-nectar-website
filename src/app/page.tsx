@@ -422,8 +422,8 @@ export default function Home() {
                 }}
               >
                 <Image
-                  src="/gallery/story-hive-frame.jpg"
-                  alt="Gloved hands lifting a frame heavy with bees from the hive"
+                  src="/gallery/story-fresh-comb.jpg"
+                  alt="A gloved hand holding a frame of freshly drawn honeycomb dotted with bees"
                   fill
                   sizes="(min-width: 1024px) 50vw, 100vw"
                   className="object-cover"
